@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Host Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Flask Game</title>
 </head>
 <body>
-    <h1>Host Dashboard</h1>
-    <p>Invite players by sharing this link: <a href="{{ url_for('join_game', _external=True) }}">Join Game</a></p>
-    <button onclick="startGame()">Start Game</button>
-    <button onclick="resetGame()">Reset Game</button>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <h1>Welcome to the Flask Game</h1>
+    <form method="POST" action="/host">
+        <label for="name">Enter Your Name (Host):</label>
+        <input type="text" name="name" id="name" required>
+        <button type="submit">Host Game</button>
+    </form>
+    <form method="POST" action="/join_game">
+        <label for="game_id">Enter Game ID to Join:</label>
+        <input type="number" name="game_id" id="game_id" required>
+        <label for="name">Enter Your Name:</label>
+        <input type="text" name="name" id="name" required>
+        <button type="submit">Join Game</button>
+    </form>
 </body>
 </html>
