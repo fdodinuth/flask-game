@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Join the Game</h1>
+    <form id="player-form">
+        <input type="text" name="player_name" placeholder="Your Name" required>
+        {% for question in questions %}
+        <label>{{ question }}</label>
+        <input type="text" name="answers[]" required>
+        {% endfor %}
+        <button type="submit">Done</button>
+    </form>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
