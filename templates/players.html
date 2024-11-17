@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players in the Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #282c34;
+            color: white;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .players-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .players-list li {
+            margin: 10px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #21a1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Game</h1>
+    <h2>Players in the Game:</h2>
+    <ul class="players-list">
+        {% for player in game_data['players'] %}
+            <li>{{ player }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{{ url_for('start_game', game_id=game_id) }}" method="POST">
+        <button type="submit" class="button">Start Game</button>
+    </form>
+
+    <!-- Optionally show the host if needed -->
+    <p>Host: {{ game_data['host'] }}</p>
+</body>
+</html>
